@@ -149,6 +149,8 @@ class NativeWindowMac : public NativeWindow,
 
   bool simple_fullscreen() const { return always_simple_fullscreen_; }
 
+  void SetRenderWidgetHostOpaque(bool opaque);
+
  protected:
   // Return a vector of non-draggable regions that fill a window of size
   // |width| by |height|, but leave gaps where the window should be draggable.
@@ -212,6 +214,9 @@ class NativeWindowMac : public NativeWindow,
   bool was_movable_;
   NSRect original_frame_;
   NSUInteger simple_fullscreen_mask_;
+
+  NSColor* background_color_before_vibrancy_ = nil;
+  bool transparency_before_vibrancy_;
 
   // The presentation options before entering simple fullscreen mode.
   NSApplicationPresentationOptions simple_fullscreen_options_;
